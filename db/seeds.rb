@@ -5,69 +5,84 @@ users = User.create([
     {
         "name": "vinit.kt",
         "id": "4001011544207",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "Kevin Paylow",
         "id": "4004787938207",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "delano",
         "id": "4004590176651",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "Naveen Arasu",
         "id": "4001008999835",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "Vinit Tibrewal",
         "id": "4001417819449",
+        "password": "password",
         "user_type": "SUPPORTREP"
     }, {
         "name": "Jennifer Lauren Mayfield",
         "id": "4004726105762",
+        "password": "password",
         "user_type": "ENDUSER"
     },
     {
         "name": "Naresh Naresh",
         "id": "4002176701569",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "rohith.k",
         "id": "4001872635307",
+        "password": "password",
         "user_type": "ENDUSER"
     }, {
         "name": "Anish Mathew",
         "id": "4000103918626",
+        "password": "password",
         "user_type": "SUPPORTREP"
     },
     {
         "name": "Sushmitha B",
         "id": "4000881426378",
+        "password": "password",
         "user_type": "SUPPORTREP"
     },
     {
         "name": "janaki shantharam",
         "id": "4002398734469",
+        "password": "password",
         "user_type": "ENDUSER"
     },
     {
         "name": "Johnson Johnson",
         "id": "4001007978099",
+        "password": "password",
         "user_type": "ENDUSER"
     },
     {
         "name": "Sharanya",
         "id": "4001018010793",
+        "password": "password",
         "user_type": "ENDUSER"
     },
     {
         "name": "Anjanaa Santhanam",
         "id": "4001417789488",
+        "password": "password",
         "user_type": "SUPPORTREP"
     },
     {
         "name": "Shreyasee Ghosh",
         "id": "4001062250700",
+        "password": "password",
         "user_type": "SUPPORTREP"
     }
 ])

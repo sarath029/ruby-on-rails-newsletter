@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
 import { useAlert } from 'react-alert'
+import axios from 'axios';
 
 const Login = (props) => {
   const [name, setName] = useState("");
@@ -12,12 +13,31 @@ const Login = (props) => {
   }
   const alert = useAlert();
   const handleSubmit = (event) => {
+
+    event.preventDefault();
     const valid = performValidation();
-    if (valid) {
-      event.preventDefault();
-      console.log(name);
-      console.log(password);
+
+    const data = {
+      'user': {
+        'name': name,
+        'password': password
+      }
     }
+
+    if (valid) {
+      const url = '/login';
+      axios.post(url, data)
+        .then(response => {
+          if(response.data['status'] == 200){
+
+          }else{
+            console.log(response.data)
+            alert.show(response.data['message'])         
+          }
+
+        });
+    }
+
     else {
       alert.show('Incorrect username or password!')
     }
@@ -45,7 +65,7 @@ const Login = (props) => {
         <button type="button" className="btn" onClick={handleSubmit}>
           Login
         </button>
-      </div> 
+      </div>
     </div>
   );
 }

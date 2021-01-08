@@ -9,11 +9,16 @@ class SessionsController < ApplicationController
             logged_in: true,
             user: @user
           }
+        elsif @user
+          render json: { 
+            status: 401,
+            message: 'incorrect password entered'
+          }
         else
           render json: { 
             status: 401,
-            errors: ['no such user, please try again']
-          }
+            message: 'no such user present'
+          }  
         end
     end
 

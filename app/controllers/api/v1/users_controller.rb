@@ -12,11 +12,11 @@ module Api
             end
 
             def create
-                user = User.new(user_params)
+                @user = User.new(user_params)
             
-                if user.save
+                if @user.save
                     login!  
-                    render json: UserSerializer.new(user).as_json
+                    render json: UserSerializer.new(@user).as_json
                 else
                     render json: {error: user.error.messages}, status: 422
                 end
