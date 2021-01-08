@@ -18,9 +18,7 @@ class SessionsController < ApplicationController
     end
 
     def is_logged_in?
-        user = User.find_by(name: session_params[:name])
-      
-        if logged_in? && current_user == user
+        if logged_in? && current_user
           render json: {
             logged_in: true,
             user: current_user
@@ -28,7 +26,7 @@ class SessionsController < ApplicationController
         else
           render json: {
             logged_in: false,
-            message: 'no such user'
+            message: 'no user logged in'
           }
         end
     end

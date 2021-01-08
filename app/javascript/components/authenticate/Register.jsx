@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
+
+
+// const [RegDetails, setRegDetails] = useState({
+//   name: null,
+//   email: null,
+//   password:null
+// });
 
 const Register = (props) => {
   return (

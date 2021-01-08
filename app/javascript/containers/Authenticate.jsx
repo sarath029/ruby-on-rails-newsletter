@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.scss";
-import Login from "./login/login";
-import Register from "./login/register";
+import "./Authenticate.scss";
+import Login from "../components/authenticate/Login";
+import Register from "../components/authenticate/Register";
 
-const App = (props) => {
+const Authenticate = (props) => {
     const [LoginActive, setLoginActive] = useState(true);
     const rightSide = useRef(null);
     const currentActive = useRef(null);
@@ -26,7 +26,7 @@ const App = (props) => {
 
     const currentInactive = LoginActive ? "Register" : "Login";
     return (
-        <div className="App">
+        <div className="Authenticate">
             <div className="login">
                 <div className="container">
                     {LoginActive && (
@@ -60,4 +60,4 @@ const RightSide = props => {
     );
 };
 
-export default App;
+export default Authenticate;
