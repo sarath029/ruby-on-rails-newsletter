@@ -4,7 +4,7 @@ import Login from "../components/authenticate/Login";
 import Register from "../components/authenticate/Register";
 
 const Authenticate = (props) => {
-    const [LoginActive, setLoginActive] = useState(true);
+    const [loginActive, setLoginActive] = useState(true);
     const rightSide = useRef(null);
     const currentActive = useRef(null);
 
@@ -13,26 +13,26 @@ const Authenticate = (props) => {
     }, [])
 
     const changeState = () => {
-        if (LoginActive) {
+        if (loginActive) {
             rightSide.current.classList.remove("right");
             rightSide.current.classList.add("left");
         } else {
             rightSide.current.classList.remove("left");
             rightSide.current.classList.add("right");
         }
-        setLoginActive(!LoginActive);
+        setLoginActive(!loginActive);
 
     }
 
-    const currentInactive = LoginActive ? "Register" : "Login";
+    const currentInactive = loginActive ? "Register" : "Login";
     return (
         <div className="Authenticate">
             <div className="login">
                 <div className="container">
-                    {LoginActive && (
+                    {loginActive && (
                         <Login containerRef={currentActive} />
                     )}
-                    {!LoginActive && (
+                    {!loginActive && (
                         <Register containerRef={currentActive} />
                     )}
                 </div>

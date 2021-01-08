@@ -2,13 +2,6 @@ import React, { useState } from "react";
 import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
 
-
-// const [RegDetails, setRegDetails] = useState({
-//   name: null,
-//   email: null,
-//   password:null
-// });
-
 const Register = (props) => {
   return (
     <div className="base-container" ref={props.containerRef}>
@@ -35,7 +28,7 @@ const Register = (props) => {
       <div className="footer">
         <button type="button" className="btn">
           Register
-          </button>
+        </button>
       </div>
     </div>
   );

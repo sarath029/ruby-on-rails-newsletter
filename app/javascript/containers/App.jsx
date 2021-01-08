@@ -5,7 +5,7 @@ import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 
 const App = () => {
 
-    const [IsAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         const url = '/logged_in';
@@ -14,9 +14,9 @@ const App = () => {
                 setIsAuthenticated(true);
             });
 
-    }, [IsAuthenticated])
+    }, [isAuthenticated])
 
-    if (IsAuthenticated) {
+    if (isAuthenticated) {
         return (
             <BrowserRouter>
                 <Switch>
