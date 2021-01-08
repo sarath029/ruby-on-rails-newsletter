@@ -12,14 +12,30 @@ module Api
             end
 
             def create
-                @user = User.new(user_params)
-            
-                if @user.save
-                    login!  
-                    render json: UserSerializer.new(@user).as_json
+                user = User.find_by(name: user_params[:name])
+
+                if user.present?
+                    render json: { 
+                        status: 422,
+                        message: 'username already exists'
+                    }  
                 else
-                    render json: {error: user.error.messages}, status: 422
-                end
+                    @user = User.new(user_params)
+            
+                    if @user.save
+                        login!  
+                        render json: {
+                            user: UserSerializer.new(@user).as_json, 
+                            status: 200,
+                            message: 'user created successfully'
+                        }
+                    else
+                        render json: { 
+                            status: 422,
+                            message: 'error creating the user'
+                        }  
+                    end
+                end    
             end
 
             def update

@@ -2,40 +2,39 @@ import React, { useEffect, useState } from "react";
 import Authenticate from "./Authenticate";
 import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
+import Home from "./Home";
 
 const App = () => {
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
         const url = '/logged_in';
         axios.get(url)
             .then(response => {
-                setIsAuthenticated(true);
+                console.log(response.data);
+                if (response.data['status'] == 200) {
+                    setIsAuthenticated(true);
+
+                }
             });
 
     }, [isAuthenticated])
 
-    if (isAuthenticated) {
-        return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/">
-                        <Authenticate></Authenticate>
-                    </Route>
-                </Switch>
+    return (
+        <BrowserRouter>
+            <Switch>                
+                <Route exact path="/">
+                    <Authenticate></Authenticate>
+                </Route>
 
-            </BrowserRouter>
-        )
-    }
-    else {
-
-        return (
-            <BrowserRouter>
-                <Redirect to="/" />
-            </BrowserRouter>
-        )
-    }
+                <Route path="/home">
+                    <Home isAuthenticated={isAuthenticated} ></Home>
+                </Route>
+               
+                <Route render={() => <Redirect to={{pathname: "/"}} />} />
+            </Switch>
+        </BrowserRouter>
+    )
 
 }
 

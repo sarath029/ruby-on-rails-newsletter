@@ -6,8 +6,12 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(session_params[:password])
           login!
           render json: {
-            logged_in: true,
-            user: @user
+            status: 200,
+            data: {
+              logged_in: true,
+              user: @user
+            },
+            message: 'login successful' 
           }
         elsif @user
           render json: { 
@@ -25,11 +29,16 @@ class SessionsController < ApplicationController
     def is_logged_in?
         if logged_in? && current_user
           render json: {
-            logged_in: true,
-            user: current_user
+            status: 200,
+            data: {
+              logged_in: true,
+              user: current_user  
+            },
+            message: 'user is logged in'
           }
         else
           render json: {
+            status: 401,
             logged_in: false,
             message: 'no user logged in'
           }
@@ -40,7 +49,8 @@ class SessionsController < ApplicationController
           logout!
           render json: {
             status: 200,
-            logged_out: true
+            logged_out: true,
+            message: 'logged out successfully'
           }
     end
     
