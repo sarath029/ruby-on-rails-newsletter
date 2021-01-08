@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
-import { Login, Register } from "./login/index";
+import Login from "./login/login";
+import Register from "./login/register";
 
 const App = (props) => {
     const [LoginActive, setLoginActive] = useState(true);
@@ -12,7 +13,6 @@ const App = (props) => {
     }, [])
 
     const changeState = () => {
-        console.log(rightSide.current);
         if (LoginActive) {
             rightSide.current.classList.remove("right");
             rightSide.current.classList.add("left");
@@ -25,7 +25,6 @@ const App = (props) => {
     }
 
     const currentInactive = LoginActive ? "Register" : "Login";
-    console.log(currentInactive);
     return (
         <div className="App">
             <div className="login">
