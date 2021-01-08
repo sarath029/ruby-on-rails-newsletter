@@ -15,6 +15,7 @@ module Api
                 user = User.new(user_params)
             
                 if user.save
+                    login!  
                     render json: UserSerializer.new(user).as_json
                 else
                     render json: {error: user.error.messages}, status: 422
