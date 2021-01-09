@@ -14,7 +14,6 @@ const App = () => {
                 console.log(response.data);
                 if (response.data['status'] == 200) {
                     setIsAuthenticated(true);
-
                 }
             });
 
@@ -22,16 +21,16 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <Switch>                
+            <Switch>
                 <Route exact path="/">
                     <Authenticate></Authenticate>
                 </Route>
 
                 <Route path="/home">
-                    <Home isAuthenticated={isAuthenticated} ></Home>
+                    {isAuthenticated ? <Home></Home> : <Authenticate></Authenticate>}
                 </Route>
-               
-                <Route render={() => <Redirect to={{pathname: "/"}} />} />
+
+                <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
         </BrowserRouter>
     )

@@ -9,6 +9,7 @@
     "@rails/webpacker": "5.2.1",
     "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "materialize-css": "^1.0.0-rc.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-alert": "^7.0.2",
