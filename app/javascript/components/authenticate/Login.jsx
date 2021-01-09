@@ -68,7 +68,7 @@ const Login = (props) => {
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn" onClick={handleSubmit}>
+          <button type="button" className="sub-btn" onClick={handleSubmit}>
             Login
           </button>
         </div>

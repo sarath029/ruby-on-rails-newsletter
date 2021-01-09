@@ -71,7 +71,7 @@ const Register = (props) => {
 
       </div>
       <div className="footer">
-        <button type="button" className="btn" onClick={handleSubmit}>
+        <button type="button" className="sub-btn" onClick={handleSubmit}>
           Register
         </button>
       </div>
