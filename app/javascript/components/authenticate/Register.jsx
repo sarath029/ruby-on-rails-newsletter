@@ -3,6 +3,8 @@ import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
 import { useAlert } from 'react-alert'
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+
 
 const Register = (props) => {
   const [name, setName] = useState("");

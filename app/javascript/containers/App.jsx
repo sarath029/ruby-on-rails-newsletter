@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Authenticate from "./Authenticate";
 import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
-import Home from "./Home";
+import Topics from "./Topics";
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,8 +26,8 @@ const App = () => {
                     <Authenticate></Authenticate>
                 </Route>
 
-                <Route path="/home">
-                    {isAuthenticated ? <Home></Home> : <Authenticate></Authenticate>}
+                <Route path="/topics">
+                    {isAuthenticated ? <Topics></Topics> : <Authenticate></Authenticate>}
                 </Route>
 
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />
