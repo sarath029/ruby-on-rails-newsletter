@@ -5,6 +5,7 @@ import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Topics from "./Topics";
 
 const App = () => {
+    
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -16,8 +17,7 @@ const App = () => {
                     setIsAuthenticated(true);
                 }
             });
-
-    }, [isAuthenticated])
+    })
 
     return (
         <BrowserRouter>
