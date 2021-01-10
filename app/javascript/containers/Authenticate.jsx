@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Authenticate.scss";
 import Login from "../components/authenticate/Login";
 import Register from "../components/authenticate/Register";
+import {withRouter} from 'react-router-dom'
 
 const Authenticate = (props) => {
     const [loginActive, setLoginActive] = useState(true);
@@ -25,6 +26,7 @@ const Authenticate = (props) => {
     }
 
     const currentInactive = loginActive ? "Register" : "Login";
+
     return (
         <div className="Authenticate">
             <div className="login">
@@ -60,4 +62,4 @@ const RightSide = props => {
     );
 };
 
-export default Authenticate;
+export default withRouter(Authenticate);

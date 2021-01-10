@@ -3,21 +3,19 @@ import Authenticate from "./Authenticate";
 import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Topics from "./Topics";
+import { connect } from 'react-redux'
 
-const App = () => {
-    
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+const App = (props) => {
 
     useEffect(() => {
         const url = '/logged_in';
         axios.get(url)
             .then(response => {
-                console.log(response.data);
-                if (response.data['status'] == 200) {
-                    setIsAuthenticated(true);
+                if (response.data['status'] === 200) {
+                    props.setIsAuthenticated(true)
                 }
             });
-    })
+    });
 
     return (
         <BrowserRouter>
@@ -25,16 +23,30 @@ const App = () => {
                 <Route exact path="/">
                     <Authenticate></Authenticate>
                 </Route>
-
                 <Route path="/topics">
-                    {isAuthenticated ? <Topics></Topics> : <Authenticate></Authenticate>}
+                    {props.isAuthenticated ? <Topics></Topics> : <Authenticate></Authenticate>}
                 </Route>
 
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
         </BrowserRouter>
+
     )
 
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setIsAuthenticated: () => {
+            dispatch({ type: 'SET' });
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

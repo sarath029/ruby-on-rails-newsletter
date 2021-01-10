@@ -12,4 +12,12 @@ class Topic < ApplicationRecord
         end
     end
 
+    def truncated_content
+        length = 200
+        self.content.size > length + 5 ? [self.content[0,length],self.content[-5,5]].join("...") : self.content
+    end
+
+    def created_at_string
+        self.created_at.to_formatted_s(:long)
+    end
 end

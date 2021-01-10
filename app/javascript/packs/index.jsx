@@ -6,6 +6,9 @@ import ReactDOM from 'react-dom'
 import App from '../containers/App'
 import { transitions, positions, Provider as AlertProvider, types } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from '../store/reducer'
 
 
 const options = {
@@ -17,11 +20,14 @@ const options = {
   transition: transitions.FADE
 }
 
+const store = createStore(reducer);
+
 document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <AlertProvider template={AlertTemplate} {...options}>
-      <App />
+      <Provider store={store}>
+        <App /></Provider>
     </AlertProvider>,
     document.body.appendChild(document.createElement('div')),
   )

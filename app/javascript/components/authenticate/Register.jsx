@@ -3,13 +3,12 @@ import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
 import { useAlert } from 'react-alert'
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 const Register = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const alert = useAlert();
   const performValidation = () => {
@@ -33,8 +32,9 @@ const Register = (props) => {
         .then(response => {
           console.log(response.data)
           if (response.data['status'] == 200) {
-            setIsAuthenticated(true);
-            console.log(isAuthenticated);
+            props.setIsAuthenticated(true);
+            console.log(props.isAuthenticated);
+            history.push("/topics");
           } else {
             alert.show(response.data['message'])
           }
@@ -44,12 +44,6 @@ const Register = (props) => {
     else {
       alert.show('Enter a valid string for username and password (password of atleast 8 characters.)!')
     }
-  }
-
-  if (isAuthenticated) {
-    return(
-      <Redirect to="/home"></Redirect>
-    )
   }
 
 
@@ -75,11 +69,26 @@ const Register = (props) => {
       <div className="footer">
         <button type="button" className="sub-btn" onClick={handleSubmit}>
           Register
-        </button>
+          </button>
       </div>
     </div>
   );
 
 }
 
-export default Register;
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setIsAuthenticated: () => {
+      dispatch({ type: 'SET' });
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
