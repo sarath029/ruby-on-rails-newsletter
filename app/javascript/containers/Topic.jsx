@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
 import Content from '../components/topic/content/Content'
 import Navigation from '../components/topics/navigation/Navigation';
 
@@ -10,4 +9,4 @@ const Topic = (params) => {
   </div>)
 }
 
-export default withRouter(Topic);
+export default Topic;

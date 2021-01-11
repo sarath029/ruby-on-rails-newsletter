@@ -3,7 +3,7 @@ import { Card, Container, Col, Button, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { ChatDots } from 'react-bootstrap-icons';
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 
 const Content = () => {
 
@@ -60,4 +60,4 @@ const Content = () => {
     }
 }
 
-export default Content;
+export default withRouter(Content);

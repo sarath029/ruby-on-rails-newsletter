@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '../components/topics/navigation/Navigation';
 import Content from '../components/topics/content/Content';
-import { withRouter } from 'react-router-dom';
 
 const Topics = () => {
   return (
@@ -12,4 +11,4 @@ const Topics = () => {
 
   );
 }
-export default withRouter(Topics);
+export default Topics;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Container, Col, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 
 const Content = (props) => {
@@ -109,4 +109,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(Content);
+export default connect(mapStateToProps)(withRouter(Content));
