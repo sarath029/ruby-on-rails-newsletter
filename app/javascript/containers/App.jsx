@@ -13,10 +13,11 @@ const App = (props) => {
         axios.get(url)
             .then(response => {
                 if (response.data['status'] === 200) {
-                    props.setIsAuthenticated(true)
+                    props.setIsAuthenticated(true);
+                    props.setUser(response.data['data']['user']['id'])
                 }
             });
-    });
+    }, [props.isAuthenticated]);
 
     return (
         <BrowserRouter>
@@ -42,15 +43,19 @@ const App = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state
+        isAuthenticated: state.isAuthenticated
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        setIsAuthenticated: () => {
-            dispatch({ type: 'SET' });
+        setIsAuthenticated: (value) => {
+            dispatch({ type: 'SETAUTH', val: value});
+        },
+        setUser: (user) =>{
+            dispatch({ type: 'SAVEUSER', user:user})
         }
+
     }
 }
 

@@ -52,14 +52,14 @@ const Navigation = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state
+        isAuthenticated: state.isAuthenticated
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        setIsAuthenticated: () => {
-            dispatch({ type: 'UNSET' });
+        setIsAuthenticated: (value) => {
+            dispatch({ type: 'SETAUTH', val:value });
         }
     }
 }

@@ -80,14 +80,14 @@ const Login = (props) => {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state
+    isAuthenticated: state.isAuthenticated
   }
 }
 
 const mapDispatchToProps = dispatch =>{
   return {
-    setIsAuthenticated: () => {
-      dispatch({type:'SET'});
+    setIsAuthenticated: (value) => {
+      dispatch({type:'SETAUTH', val:value});
     }
   }
 }
