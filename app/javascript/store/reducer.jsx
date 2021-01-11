@@ -5,6 +5,10 @@ const reducer = (state = isAuthenticated, action) => {
         return true;
     }
     
+    if (action.type === 'UNSET'){
+        return false;
+    }
+    
     return state;
 }
 

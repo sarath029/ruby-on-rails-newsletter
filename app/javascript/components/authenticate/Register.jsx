@@ -3,12 +3,13 @@ import loginImg from "../../../assets/images/login.svg";
 import "./style.scss";
 import { useAlert } from 'react-alert'
 import axios from 'axios';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 const Register = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const alert = useAlert();
   const performValidation = () => {

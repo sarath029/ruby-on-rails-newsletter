@@ -3,6 +3,7 @@ import Authenticate from "./Authenticate";
 import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Topics from "./Topics";
+import Topic from "./Topic"
 import { connect } from 'react-redux'
 
 const App = (props) => {
@@ -23,6 +24,10 @@ const App = (props) => {
                 <Route exact path="/">
                     <Authenticate></Authenticate>
                 </Route>
+                <Route path="/topic/:id">
+                    {props.isAuthenticated ? <Topic></Topic> : <Authenticate></Authenticate>}
+                </Route>
+
                 <Route path="/topics">
                     {props.isAuthenticated ? <Topics></Topics> : <Authenticate></Authenticate>}
                 </Route>
