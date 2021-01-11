@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container, Col } from 'react-bootstrap'
+import { Card, Container, Col, Button, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { ChatDots } from 'react-bootstrap-icons';
@@ -14,6 +14,9 @@ const Content = () => {
         history.push(url);
     }
 
+    const createTopicSubmit = () =>{
+        history.push('/create-topic')
+    }
 
     useEffect(() => {
         const url = '/api/v1/topics';
@@ -29,8 +32,9 @@ const Content = () => {
     else {
         console.log(topicsData['data']);
         return (
-            <Container fluid className="mt-3">
-                <Col sm={8}>
+            <Container fluid className="m-4">
+                <Row>
+                <Col sm={9}>
                     {topicsData['data'].map(row => (
                         <Card key={row['id']} className="mt-3" onClick={() => showTopic(row['attributes']['permalink'])}>
                             <Card.Body className="p-3">
@@ -47,8 +51,11 @@ const Content = () => {
                     ))}
                 </Col>
                 <Col sm={3}>
+                        <Button variant="outline-primary" className="m-3" onClick={createTopicSubmit}>Create a New Topic</Button>
                 </Col>
-            </Container>
+                </Row>
+                
+            </Container >
         );
     }
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Topics from "./Topics";
 import Topic from "./Topic"
+import CreateTopic from "./CreateTopic"
 import { connect } from 'react-redux'
 
 const App = (props) => {
@@ -31,6 +32,10 @@ const App = (props) => {
 
                 <Route path="/topics">
                     {props.isAuthenticated ? <Topics></Topics> : <Authenticate></Authenticate>}
+                </Route>
+
+                <Route path="/create-topic">
+                    {props.isAuthenticated ? <CreateTopic></CreateTopic> : <Authenticate></Authenticate>}
                 </Route>
 
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />

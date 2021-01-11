@@ -85,7 +85,7 @@ const Content = (props) => {
                                         <div>
                                             <h6>Add Comment</h6>
                                             <textarea style={{ width: "100%", height: "100px", margin: "10px" }} type="textarea" onChange={e => setNewComment(e.target.value)}></textarea>
-                                            <Button onClick={addComment} style={{ marginLeft: "90%" }}>Submit</Button>
+                                            <Button variant="outline-primary" onClick={addComment} style={{ marginLeft: "90%" }}>Submit</Button>
                                         </div>
                                     </Card.Body>
                                 </Card>
