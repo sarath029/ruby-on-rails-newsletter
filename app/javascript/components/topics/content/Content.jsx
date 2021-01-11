@@ -5,9 +5,8 @@ import axios from 'axios';
 import { ChatDots } from 'react-bootstrap-icons';
 import { useHistory, withRouter } from "react-router-dom";
 
-const Content = () => {
+const Content = (props) => {
 
-    const [topicsData, setTopicsData] = useState(null);
     const history = useHistory();
     const showTopic = (link) => {
         const url = '/topic/' + link;
@@ -22,20 +21,20 @@ const Content = () => {
         const url = '/api/v1/topics';
         axios.get(url)
             .then(response => {
-                setTopicsData(response.data);
+                props.setTopicsData(response.data);
             });
     }, [])
 
-    if (topicsData === null) {
+    if (props.topicsData === null) {
         return (null);
     }
     else {
-        console.log(topicsData['data']);
+        console.log(props.topicsData['data']);
         return (
             <Container fluid className="m-4">
                 <Row>
                 <Col sm={9}>
-                    {topicsData['data'].map(row => (
+                    {props.topicsData['data'].map(row => (
                         <Card key={row['id']} className="mt-3" onClick={() => showTopic(row['attributes']['permalink'])}>
                             <Card.Body className="p-3">
                                 <h5>{row['attributes']['subject']}</h5>

@@ -1,6 +1,7 @@
 class Api::V1::TopicsController < ApplicationController
     def index
         topics = Topic.all
+        topics = topics.by_name(params[:search_by]) if params[:search_by].present?   
         render json: TopicSerializer.new(topics, options).as_json
     end
 

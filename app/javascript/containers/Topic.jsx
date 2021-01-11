@@ -1,6 +1,6 @@
 import React from 'react'
 import Content from '../components/topic/content/Content'
-import Navigation from '../components/topics/navigation/Navigation';
+import Navigation from '../components/topic/navigation/Navigation';
 
 const Topic = (params) => {
   return(<div>

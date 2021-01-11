@@ -20,4 +20,12 @@ class Topic < ApplicationRecord
     def created_at_string
         self.created_at.to_formatted_s(:long)
     end
+
+    def self.by_name(query)
+        if query.present?
+          self.where(<<-SQL, "%#{query.downcase}%")
+            subject ILIKE ?
+          SQL
+        end
+    end
 end

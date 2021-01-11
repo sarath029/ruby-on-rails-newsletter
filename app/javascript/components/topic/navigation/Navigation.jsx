@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Navigation.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
@@ -16,17 +16,6 @@ const Navigation = (props) => {
         history.push('/topics')
     }
     
-    const [search, setSearch] = useState("");
-    
-    const loadTopics = (e)=>{
-        console.log(search);
-        const url = '/api/v1/topics?search_by=' + search;
-        axios.get(url)
-            .then(response => {
-                props.setTopicsData(response.data);
-            });
-    }
-
     const Logout = () => {
         const url = '/logout';
         axios.post(url)
@@ -47,13 +36,8 @@ const Navigation = (props) => {
     return (
         <Navbar bg="light" variant="light" className=" border-bottom border-info">
             <Navbar.Brand  onClick={goToTopics}>Avaamo Forum</Navbar.Brand>
-            <Form onSubmit={e => { e.preventDefault(); }} inline className="ml-auto pr-5">
-                <FormControl type="text" placeholder="Search Topic" className="mr-sm-2" onChange={e => setSearch(e.target.value)}/>
-                <Search className="ml-3" onClick={loadTopics} style={{curor:"pointer"}}/>
-            </Form>
-            <Nav>
+            <Nav className="ml-auto pr-0">
                 <Nav.Link className="pl-4" onClick={goToTopics}>Home</Nav.Link>
-
                 <Nav.Link onClick={Logout}>Logout</Nav.Link>
             </Nav>
         </Navbar>
