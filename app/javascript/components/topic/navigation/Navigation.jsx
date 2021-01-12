@@ -12,10 +12,10 @@ const Navigation = (props) => {
 
     const history = useHistory();
 
-    const goToTopics = () =>{
+    const goToTopics = () => {
         history.push('/topics')
     }
-    
+
     const Logout = () => {
         const url = '/logout';
         axios.post(url)
@@ -35,7 +35,7 @@ const Navigation = (props) => {
 
     return (
         <Navbar bg="light" variant="light" className=" border-bottom border-info">
-            <Navbar.Brand  onClick={goToTopics}>Avaamo Forum</Navbar.Brand>
+            <Navbar.Brand onClick={goToTopics}>Avaamo Forum</Navbar.Brand>
             <Nav className="ml-auto pr-0">
                 <Nav.Link className="pl-4" onClick={goToTopics}>Home</Nav.Link>
                 <Nav.Link onClick={Logout}>Logout</Nav.Link>
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setIsAuthenticated: (value) => {
-            dispatch({ type: 'SETAUTH', val:value });
+            dispatch({ type: 'SETAUTH', val: value });
         }
     }
 }

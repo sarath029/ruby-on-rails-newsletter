@@ -31,7 +31,7 @@ const Content = (props) => {
     else {
         console.log(props.topicsData['data']);
         return (
-            <Container fluid className="m-4">
+            <Container fluid className="p-4">
                 <Row>
                 <Col sm={9}>
                     {props.topicsData['data'].map(row => (
