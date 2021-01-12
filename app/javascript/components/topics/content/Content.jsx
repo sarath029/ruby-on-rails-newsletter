@@ -34,7 +34,7 @@ const Content = (props) => {
             <Container fluid className="p-4">
                 <Row>
                 <Col sm={9}>
-                    {props.topicsData['data'].map(row => (
+                    {props.topicsData['data'].reverse().map(row => (
                         <Card key={row['id']} className="mt-3" onClick={() => showTopic(row['attributes']['permalink'])}>
                             <Card.Body className="p-3">
                                 <h5>{row['attributes']['subject']}</h5>
