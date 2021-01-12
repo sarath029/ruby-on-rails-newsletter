@@ -49,7 +49,7 @@ const Navigation = (props) => {
             <Navbar.Brand  onClick={goToTopics}>Avaamo Forum</Navbar.Brand>
             <Form onSubmit={e => { e.preventDefault(); }} inline className="ml-auto pr-5">
                 <FormControl type="text" placeholder="Search Topic" className="mr-sm-2" onChange={e => setSearch(e.target.value)}/>
-                <Search className="ml-3" onClick={loadTopics} style={{curor:"pointer"}}/>
+                <Search className="ml-3" onClick={loadTopics} style={{cursor:"pointer"}}/>
             </Form>
             <Nav>
                 <Nav.Link className="pl-4" onClick={goToTopics}>Home</Nav.Link>
