@@ -21,6 +21,7 @@ const Content = (props) => {
         const url = '/api/v1/topics';
         axios.get(url)
             .then(response => {
+                response.data['data'] = response.data['data'].reverse()
                 props.setTopicsData(response.data);
             });
     }, [])
@@ -34,7 +35,7 @@ const Content = (props) => {
             <Container fluid className="p-4">
                 <Row>
                 <Col sm={9}>
-                    {props.topicsData['data'].reverse().map(row => (
+                    {props.topicsData['data'].map(row => (
                         <Card key={row['id']} className="mt-3" onClick={() => showTopic(row['attributes']['permalink'])}>
                             <Card.Body className="p-3">
                                 <h5>{row['attributes']['subject']}</h5>
