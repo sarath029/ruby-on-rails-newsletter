@@ -49,7 +49,7 @@ const Register = (props) => {
 
 
   return (
-    <div className="base-container" ref={props.containerRef}>
+    <form className="base-container" ref={props.containerRef} onSubmit={handleSubmit}>
       <div className="header">Register</div>
       <div className="content">
         <div className="image">
@@ -68,11 +68,11 @@ const Register = (props) => {
 
       </div>
       <div className="footer">
-        <button type="button" className="sub-btn" onClick={handleSubmit}>
+        <button type="submit" className="sub-btn">
           Register
           </button>
       </div>
-    </div>
+    </form>
   );
 
 }

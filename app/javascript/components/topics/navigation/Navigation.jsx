@@ -19,6 +19,7 @@ const Navigation = (props) => {
     const [search, setSearch] = useState("");
     
     const loadTopics = (e)=>{
+        e.preventDefault();
         console.log(search);
         const url = '/api/v1/topics?search_by=' + search;
         axios.get(url)
@@ -47,9 +48,9 @@ const Navigation = (props) => {
     return (
         <Navbar bg="light" variant="light" className=" border-bottom border-info">
             <Navbar.Brand  onClick={goToTopics}>Avaamo Forum</Navbar.Brand>
-            <Form onSubmit={e => { e.preventDefault(); }} inline className="ml-auto pr-5">
+            <Form onSubmit={loadTopics} inline className="ml-auto pr-5">
                 <FormControl type="text" placeholder="Search Topic" className="mr-sm-2" onChange={e => setSearch(e.target.value)}/>
-                <Search className="ml-3" onClick={loadTopics} style={{cursor:"pointer"}}/>
+                <Search className="ml-3"  style={{cursor:"pointer"}}/>
             </Form>
             <Nav>
                 <Nav.Link className="pl-4" onClick={goToTopics}>Home</Nav.Link>
