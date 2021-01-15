@@ -9,7 +9,7 @@ const Content = (props) => {
     console.log('current user -' + props.currentUser)
     const [topicData, setTopicsData] = useState(null);
     let { id } = useParams();
-    const [newComment, setNewComment] = useState();
+    const [newComment, setNewComment] = useState("");
 
     const history = useHistory();
 
@@ -33,6 +33,7 @@ const Content = (props) => {
                 axios.get(url)
                     .then(response => {
                         setTopicsData(response.data);
+                        setNewComment("");
                         console.log(response.data)
                     });
         
@@ -84,7 +85,7 @@ const Content = (props) => {
                                     <Card.Body className="p-3">
                                         <div>
                                             <h6>Add Comment</h6>
-                                            <textarea style={{ width: "100%", height: "100px", margin: "10px" }} type="textarea" onChange={e => setNewComment(e.target.value)}></textarea>
+                                            <textarea style={{ width: "100%", height: "100px", margin: "10px" }} type="textarea" value={newComment} onChange={e => setNewComment(e.target.value)}></textarea>
                                             <Button variant="outline-primary" onClick={addComment} style={{ marginLeft: "90%" }}>Submit</Button>
                                         </div>
                                     </Card.Body>
