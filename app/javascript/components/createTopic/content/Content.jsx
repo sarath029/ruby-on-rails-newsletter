@@ -26,7 +26,8 @@ const Content = (props) => {
                 "topic": {
                     "creator_id": props.currentUser,
                     "subject": subject,
-                    "content": content
+                    "content": content,
+                    "status": "PUBLISHED"
                 }
 
             }

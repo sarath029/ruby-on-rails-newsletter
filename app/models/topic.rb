@@ -4,7 +4,7 @@ class Topic < ApplicationRecord
     before_create  :slugify
 
     enum topic_type: [:DISCUSSION]
-    enum status: [:PUBLISHED]
+    enum status: [:PUBLISHED, :CLOSED]
 
     def slugify
         if self.permalink.nil?

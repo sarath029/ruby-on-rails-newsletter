@@ -2,8 +2,10 @@ class Api::V1::CommentsController < ApplicationController
     
     
     def create
+        
         comment = Comment.new(comment_params)
-    
+        comment.topic.update(status: params['status']) if params['status'].present?
+
         if comment.save
             render json: CommentSerializer.new(comment).as_json
         else
